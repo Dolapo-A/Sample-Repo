@@ -5,7 +5,7 @@ import type { CartItem } from '../utils/cart'
 
 /** A fresh cart per test — sharing one let a test's mutation leak into the next. */
 const sampleItems = (): CartItem[] => [
-  { productId: 'p1', name: 'Mug', unitPrice: 30, quantity: 2 },
+  { productId: 'p1', name: 'Mug', unitPrice: 35, quantity: 2 },
 ]
 
 const fixedNow = new Date('2026-03-01T12:00:00Z')
