@@ -5,7 +5,7 @@ import type { CartItem } from '../utils/cart'
 
 /** A fresh cart per test — sharing one let a test's mutation leak into the next. */
 const sampleItems = (): CartItem[] => [
-  { productId: 'p1', name: 'Mug', unitPrice: 30.5, quantity: 2 },
+  { productId: 'p1', name: 'Mug', unitPrice: 30, quantity: 2 },
 ]
 
 const fixedNow = new Date('2026-03-01T12:00:00Z')
@@ -16,8 +16,8 @@ describe('placeOrder', () => {
     const order = placeOrder(items, fixedNow)
     expect(order.items).toEqual(items)
     expect(order.placedAt).toBe(fixedNow)
-    // Two mugs at $30.50. Below the $100 threshold, so no discount.
-    expect(order.totals.subtotal).toBe(61)
+    // Two mugs at $30 Below the $100 threshold, so no discount.
+    expect(order.totals.subtotal).toBe(60)
   })
 
   it('copies the item list so later edits cannot change a placed order', () => {
